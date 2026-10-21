@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glam Royale · Entraînement</title>
+    <link rel="stylesheet" type="text/css" href="training.css">
+
+    <!-- Même moteur que index.html, SANS p5 : tools/p5shim.js fournit createVector, p5.Vector,
+         random... (adaptateur minimal, voir son commentaire). Ordre = celui de index.html. -->
+    <script src="tools/p5shim.js"></script>
+    <script src="vehicle.js"></script>
+    <script src="core/rng.js"></script>
+    <script src="entities/steeringVehicle.js"></script>
+    <script src="entities/weapons.js"></script>
+    <script src="entities/bullet.js"></script>
+    <script src="entities/fighter.js"></script>
+    <script src="entities/playerFighter.js"></script>
+    <script src="ai/neuralNet.js"></script>
+    <script src="ai/supervised.js"></script>
+    <script src="ai/exploreFleeNet.js"></script>
+    <script src="ai/brain.js"></script>
+    <script src="ai/perception.js"></script>
+    <script src="ai/genetics.js"></script>
+    <script src="entities/bot.js"></script>
+    <script src="entities/obstacle.js"></script>
+    <script src="entities/loot.js"></script>
+    <script src="world/obstacleRules.js"></script>
+    <script src="world/zone.js"></script>
+    <script src="world/lootRules.js"></script>
+    <script src="world/pheromones.js"></script>
+    <script src="core/game.js"></script>
+    <script src="ai/trainer.js"></script>
+    <script src="weights/best.js"></script>
+    <script src="weights/reflex.js"></script>
+    <script src="ui/training.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <h1>Glam Royale · entraînement des bots</h1>
+      <p class="lead">
+        Neuroévolution : 36 réseaux de neurones s'affrontent par groupes de 12. Les meilleurs se croisent et
+        mutent. L'entraînement tourne ici, plus vite que le temps réel.
+        <a href="index.html">← Retour au jeu</a>
+      </p>
+
+      <section class="controls" aria-label="Commandes d'entraînement">
+        <button id="toggle" type="button">▶ Démarrer</button>
+        <label>Vitesse
+          <input id="speed" type="range" min="1" max="300" value="30" aria-describedby="speedValue">
+          <output id="speedValue">30 frames/tick</output>
+        </label>
+        <button id="reset" type="button">Nouvelle population aléatoire</button>
+        <button id="fromBest" type="button" title="Repart du cerveau pré-entraîné de weights/best.js">Repartir du cerveau pré-entraîné</button>
+      </section>
+
+      <section class="grid">
+        <figure>
+          <canvas id="view" width="520" height="520" role="img" aria-label="Vue de dessus de la partie d'entraînement en cours"></canvas>
+          <figcaption>Partie en cours (points = combattantes, anneau = zone, tirets = prochaine zone)</figcaption>
+        </figure>
+        <div>
+          <dl id="stats" aria-live="polite"></dl>
+          <canvas id="chart" width="520" height="240" role="img" aria-label="Courbe de la fitness par génération"></canvas>
+          <p class="legend"><span class="dot best"></span> meilleure fitness <span class="dot avg"></span> fitness moyenne</p>
+        </div>
+      </section>
+
+      <section class="controls" aria-label="Import et export">
+        <button id="exportJs" type="button">Exporter best.js</button>
+        <button id="exportJson" type="button">Exporter best.json</button>
+        <button id="useInGame" type="button">Utiliser dans le jeu</button>
+        <label class="file">Importer best.json
+          <input id="importFile" type="file" accept=".json,application/json">
+        </label>
+        <span id="message" role="status"></span>
+      </section>
+      <p class="help">
+        <strong>Utiliser dans le jeu</strong> mémorise le cerveau dans ce navigateur (localStorage) : index.html le
+        charge au prochain lancement. Pour le garder définitivement, remplacez <code>weights/best.js</code> par le
+        fichier exporté.
+      </p>
+    </main>
+  </body>
+</html>

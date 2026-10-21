@@ -1,0 +1,12 @@
+{
+  "name": "glam-royale",
+  "version": "1.0.0",
+  "description": "Glam Royale : battle royale girly, steering behaviors de Reynolds + réseaux de neurones évolutifs (p5.js)",
+  "private": true,
+  "scripts": {
+    "test": "node --test",
+    "train": "node tools/train.js",
+    "train:reflex": "node tools/train_supervised.js",
+    "evaluate": "node tools/evaluate.js"
+  }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glam Royale</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- ORDRE DE CHARGEMENT : p5, la base protégée (vehicle.js), les sous-classes, puis sketch.js.
+         Une classe doit être chargée avant la sous-classe qui l'étend. -->
+    <script src="libraries/p5.min.js"></script>
+    <script src="vehicle.js"></script>
+    <script src="core/rng.js"></script>
+    <script src="entities/steeringVehicle.js"></script>
+    <script src="entities/weapons.js"></script>
+    <script src="entities/bullet.js"></script>
+    <script src="entities/fighter.js"></script>
+    <script src="entities/playerFighter.js"></script>
+    <script src="ai/neuralNet.js"></script>
+    <script src="ai/supervised.js"></script>
+    <script src="ai/exploreFleeNet.js"></script>
+    <script src="ai/brain.js"></script>
+    <script src="ai/perception.js"></script>
+    <script src="ai/genetics.js"></script>
+    <script src="entities/bot.js"></script>
+    <script src="entities/obstacle.js"></script>
+    <script src="entities/loot.js"></script>
+    <script src="world/obstacleRules.js"></script>
+    <script src="world/zone.js"></script>
+    <script src="world/lootRules.js"></script>
+    <script src="world/pheromones.js"></script>
+    <script src="core/game.js"></script>
+    <script src="weights/best.js"></script>
+    <script src="weights/reflex.js"></script>
+    <script src="ui/palette.js"></script>
+    <script src="ui/particles.js"></script>
+    <script src="ui/sound.js"></script>
+    <script src="ui/render.js"></script>
+    <script src="ui/hud.js"></script>
+    <script src="ui/controls.js"></script>
+    <script src="sketch.js"></script>
+  </head>
+  <body>
+    <noscript>Glam Royale a besoin de JavaScript.</noscript>
+  </body>
+</html>

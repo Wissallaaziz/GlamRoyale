@@ -1,0 +1,17 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #cdbcf5;
+}
+
+canvas {
+  display: block;
+}
+
+noscript {
+  display: block;
+  padding: 24px;
+  font-family: sans-serif;
+  color: #5b2a5e;
+}
